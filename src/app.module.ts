@@ -20,7 +20,7 @@ import { join } from 'path'; // Importa 'join' para trabajar con rutas
       password: '',
       database: 'todofix',
       entities: [join(__dirname, '**', '*.entity{.ts,.js}')],  // Ajuste aquí
-      synchronize: false,
+      synchronize: false, //Se realizo un comentario de prueba aqui.
     }),
     UsuariosModule,
     ServiciosModule,
