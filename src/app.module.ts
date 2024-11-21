@@ -8,7 +8,7 @@ import { HistorialModule } from './historial/historial.module';
 import { SolicitudServicioModule } from './solicitud-servicio/solicitud-servicio.module';
 import { TrabajadoresModule } from './trabajadores/trabajadores.module';
 import { ValoracionModule } from './valoracion/valoracion.module';
-import { join } from 'path'; // Importa 'join' para trabajar con rutas
+import { join } from 'path'; 
 
 @Module({
   imports: [
@@ -19,8 +19,8 @@ import { join } from 'path'; // Importa 'join' para trabajar con rutas
       username: 'root',
       password: '',
       database: 'todofix',
-      entities: [join(__dirname, '**', '*.entity{.ts,.js}')],  // Ajuste aquí
-      synchronize: false, //Se realizo un comentario de prueba aqui.
+      entities: [join(__dirname, '**', '*.entity{.ts,.js}')],  
+      synchronize: false,
     }),
     UsuariosModule,
     ServiciosModule,

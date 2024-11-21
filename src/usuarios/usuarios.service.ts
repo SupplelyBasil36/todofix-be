@@ -31,6 +31,7 @@ export class UsuariosService {
   getUsers() {
     return this.usuarioRepository.find();
   }
+  
   getUser(idUsuario: number) {
     return this.usuarioRepository.findOne({
       where: {
