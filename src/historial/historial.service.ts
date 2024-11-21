@@ -59,4 +59,13 @@ export class HistorialService {
 
     return this.historialRepository.save(historial);
   }
+
+  getHistorial(idHistorial: number){
+    return this.historialRepository.findOne({
+      where: {
+        idHistorial
+      },
+      relations: ['trabajador', 'servicio', 'usuario']
+    })
+  }
 }

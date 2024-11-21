@@ -37,6 +37,7 @@ export class ValoracionService {
       where: {
         idValoracion,
       },
+      relations:['trabajador']
     });
   }
 }
