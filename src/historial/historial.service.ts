@@ -60,12 +60,12 @@ export class HistorialService {
     return this.historialRepository.save(historial);
   }
 
-  getHistorial(idHistorial: number){
+  getHistorial(idHistorial: number) {
     return this.historialRepository.findOne({
       where: {
-        idHistorial
+        idHistorial,
       },
-      relations: ['trabajador', 'servicio', 'usuario']
-    })
+      relations: ['trabajador', 'servicio', 'usuario'],
+    });
   }
 }

@@ -8,6 +8,5 @@ export class CreateTrabajadorDto {
   Correo: string;
   Contrasea: string;
   Ciudad?: string;
-  Calificacion?: number;
   Estado?: string;
 }

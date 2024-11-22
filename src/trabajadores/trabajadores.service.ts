@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { CreateTrabajadorDto } from 'src/dto/trabajador.dto';
 import { Trabajador } from 'src/entities/trabajador.entity';
 import { Repository } from 'typeorm';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class TrabajadoresService {
@@ -12,8 +13,18 @@ export class TrabajadoresService {
   ) {}
 
   async postData(createTrabajadorDto: CreateTrabajadorDto): Promise<string> {
-    const newWorker = this.trabajadorRepository.create(createTrabajadorDto);
-    await this.trabajadorRepository.save(newWorker);
+    const { Contrasea } = createTrabajadorDto;
+
+    // Encriptamos la contraseña antes de guardarla
+    const hashedPassword = await bcrypt.hash(Contrasea, 10);
+
+    // Creamos el nuevo usuario con la contraseña encriptada
+    const newUser = this.trabajadorRepository.create({
+      ...createTrabajadorDto,
+      Contrasea: hashedPassword,
+    });
+
+    await this.trabajadorRepository.save(newUser);
     return 'Trabajador creado exitosamente';
   }
   getUsers() {
