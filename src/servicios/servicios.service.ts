@@ -35,13 +35,16 @@ export class ServiciosService {
   getServicios() {
     return this.servicioRepository.find();
   }
+  
   getServicio(idServicio: number) {
     return this.servicioRepository.findOne({
       where: {
         idServicio,
       },
+      relations: ['trabajador', 'solicitudservicio']
     });
   }
+
   deleteServicio(idServicio: number) {
     return this.servicioRepository.delete({ idServicio });
   }

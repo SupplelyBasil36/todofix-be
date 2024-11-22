@@ -44,4 +44,14 @@ export class SolicitudServicioService {
 
     return this.solicitudservicioRepository.save(soliser);
   }
+
+  getSolSer(idSolicitud: number){
+    return this.solicitudservicioRepository.findOne({
+      where: {
+        idSolicitud
+      },
+      relations: ['usuario', 'trabajador', 'servicio']
+    })
+  }
+
 }

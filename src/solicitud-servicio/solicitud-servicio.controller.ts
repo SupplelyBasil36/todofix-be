@@ -1,4 +1,4 @@
-import { Body, Controller, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, ParseIntPipe, Post } from '@nestjs/common';
 import { SolicitudServicio } from 'src/entities/solicitud-servicio.entity';
 import { SolicitudServicioService } from './solicitud-servicio.service';
 
@@ -15,4 +15,10 @@ export class SolicitudServicioController {
     ): Promise<SolicitudServicio>{
         return this.solicitudservicioService.postData(idServicio, idTrabajador, idUsuario, createSolSer)
     }
+
+    @Get(':id')
+    getSolSer(@Param('id', ParseIntPipe) id: number): Promise<SolicitudServicio>{
+        return this.solicitudservicioService.getSolSer(id);
+    }
+
 }
