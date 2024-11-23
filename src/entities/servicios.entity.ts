@@ -29,6 +29,9 @@ export class Servicio {
   @Column('decimal', { precision: 10, scale: 2 })
   Precio_base: number;
 
+  @Column()
+  Imagen: string; // Propiedad para almacenar el nombre del archivo
+
   @ManyToOne(() => Trabajador, (trabajador) => trabajador.servicio)
   @JoinColumn({ name: 'FK_idTrabajador' })
   trabajador: Trabajador;

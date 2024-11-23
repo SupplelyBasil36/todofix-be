@@ -1,4 +1,4 @@
-import { Body, Controller, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, ParseIntPipe, Post } from '@nestjs/common';
 import { HistorialService } from './historial.service';
 import { Historial } from 'src/entities/historial.entity';
 
@@ -19,5 +19,10 @@ export class HistorialController {
       idUsuario,
       CreateHistorialDto,
     );
+  }
+
+  @Get(':id')
+  getHistorial(@Param('id', ParseIntPipe) id: number){
+    return this.historialService.getHistorial(id);
   }
 }
