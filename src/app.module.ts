@@ -18,7 +18,7 @@ import { join } from 'path';
       host: 'mysql.railway.internal',
       port: 3306,
       username: 'root',
-      password: 'hZheYkJpqxhfQBVBYkEmXwNWztujBogk',
+      password: 'fefUNJjBzyghGhjtiJkmaEDtwEsOjQlz',
       database: 'todofix',
       entities: [join(__dirname, '**', '*.entity{.ts,.js}')],  
       synchronize: true,
