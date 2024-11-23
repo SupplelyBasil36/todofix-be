@@ -8,19 +8,24 @@ import { HistorialModule } from './historial/historial.module';
 import { SolicitudServicioModule } from './solicitud-servicio/solicitud-servicio.module';
 import { TrabajadoresModule } from './trabajadores/trabajadores.module';
 import { ValoracionModule } from './valoracion/valoracion.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path'; 
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'localhost',
+      host: 'mysql.railway.internal',
       port: 3306,
       username: 'root',
-      password: '',
+      password: 'hZheYkJpqxhfQBVBYkEmXwNWztujBogk',
       database: 'todofix',
       entities: [join(__dirname, '**', '*.entity{.ts,.js}')],  
-      synchronize: false,
+      synchronize: true,
+    }),
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'uploads'),
+      serveRoot: '/uploads'
     }),
     UsuariosModule,
     ServiciosModule,

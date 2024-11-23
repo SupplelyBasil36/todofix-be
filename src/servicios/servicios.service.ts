@@ -42,13 +42,25 @@ export class ServiciosService {
     return this.servicioRepository.find();
   }
 
-  getServicio(idServicio: number) {
-    return this.servicioRepository.findOne({
+  async getServicio(idServicio: number) {
+    const servicio = await this.servicioRepository.findOne({
       where: {
         idServicio,
       },
       relations: ['trabajador', 'solicitudservicio'],
     });
+    if (!servicio) {
+      throw new NotFoundException(
+        `Servicio con id ${idServicio} no encontrado`,
+      );
+    }
+
+    const imagenUrl = `${process.env.HOST_URL}/uploads/${servicio.Imagen}`;
+
+    return {
+      ...servicio,
+      imagenUrl, // Agregar la URL de la imagen a la respuesta
+    };
   }
 
   deleteServicio(idServicio: number) {
