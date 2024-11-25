@@ -25,6 +25,6 @@ export class AuthController {
       throw new UnauthorizedException('Contraseña incorrecta');
     }
 
-    return { message: 'Login exitoso', userId: user.idUsuario }; // Aquí puedes devolver un token si lo deseas
+    return { user }; // Aquí puedes devolver un token si lo deseas
   }
 }

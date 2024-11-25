@@ -42,9 +42,4 @@ export class TrabajadoresService {
     return this.trabajadorRepository.delete({ idTrabajador });
   }
 
-  async findByEmail(Correo: string): Promise<Trabajador | undefined> {
-    return this.trabajadorRepository.findOne({
-      where: { Correo },
-    });
-  }
 }
