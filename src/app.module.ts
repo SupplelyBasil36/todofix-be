@@ -19,7 +19,7 @@ import { join } from 'path';
       port: 3306,
       username: 'root',
       password: 'xVxQeYFOXZIXxqLNfbMhmFNHgXPJHnAn',
-      database: 'todofix',
+      database: 'railway',
       entities: [join(__dirname, '**', '*.entity{.ts,.js}')],  
       synchronize: true,
     }),
