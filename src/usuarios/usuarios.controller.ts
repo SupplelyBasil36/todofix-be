@@ -15,8 +15,8 @@ import { Usuario } from 'src/entities/usuario.entity';
 export class UsuariosController {
   constructor(private readonly usuariosService: UsuariosService) {}
   @Post()
-  async create(@Body() createUsuarioDto: CreateUsuarioDto): Promise<string> {
-    return await this.usuariosService.postData(createUsuarioDto);
+  async create(@Body() createUsuarioDto: CreateUsuarioDto): Promise<Usuario> {
+    return this.usuariosService.postData(createUsuarioDto);
   }
 
   @Get()

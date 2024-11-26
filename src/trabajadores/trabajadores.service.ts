@@ -12,7 +12,7 @@ export class TrabajadoresService {
     private readonly trabajadorRepository: Repository<Trabajador>,
   ) {}
 
-  async postData(createTrabajadorDto: CreateTrabajadorDto): Promise<string> {
+  async postData(createTrabajadorDto: CreateTrabajadorDto): Promise<Trabajador> {
     const { Contrasea } = createTrabajadorDto;
 
     // Encriptamos la contraseña antes de guardarla
@@ -24,8 +24,7 @@ export class TrabajadoresService {
       Contrasea: hashedPassword,
     });
 
-    await this.trabajadorRepository.save(newUser);
-    return 'Trabajador creado exitosamente';
+    return this.trabajadorRepository.save(newUser);
   }
   getUsers() {
     return this.trabajadorRepository.find();

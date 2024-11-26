@@ -17,7 +17,7 @@ export class TrabajadoresController {
   @Post()
   async create(
     @Body() createTrabajadorDto: CreateTrabajadorDto,
-  ): Promise<string> {
+  ): Promise<Trabajador> {
     return await this.trabajadoresService.postData(createTrabajadorDto);
   }
 
