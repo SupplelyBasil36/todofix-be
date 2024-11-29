@@ -15,13 +15,13 @@ import { join } from 'path';
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'localhost', //mysql.railway.internal
+      host: 'mysql.railway.internal', //mysql.railway.internal
       port: 3306,
       username: 'root',
-      password: '',
-      database: 'todofix', //railway
+      password: 'ysbxAFzpoeFiCBSBrPRNJHWMsZTMuAtM',
+      database: 'railway', //railway
       entities: [join(__dirname, '**', '*.entity{.ts,.js}')],  
-      synchronize: false,
+      synchronize: true,
     }),
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'uploads'),
