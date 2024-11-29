@@ -16,7 +16,7 @@ import { FileInterceptor } from '@nestjs/platform-express';
 @Controller('servicios')
 export class ServiciosController {
   constructor(private readonly serviciosService: ServiciosService) {}
-  @Post()
+  @Post("/:idTrabajador")
   @UseInterceptors(FileInterceptor('Imagen'))
   async create(
     @UploadedFile() file: Express.Multer.File,
@@ -29,6 +29,7 @@ export class ServiciosController {
   getServicios() {
     return this.serviciosService.getServicios();
   }
+
   @Get(':id')
   getServicio(@Param('id', ParseIntPipe) id: number) {
     return this.serviciosService.getServicio(id);

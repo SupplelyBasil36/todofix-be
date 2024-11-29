@@ -1,21 +1,21 @@
 import { Controller, Post, Body, UnauthorizedException } from '@nestjs/common';
-import { UsuariosService } from '../usuarios/usuarios.service'; // Importa el servicio de usuarios
 import * as bcrypt from 'bcrypt'; // Importa bcrypt para comparar la contraseña
+import { TrabajadoresService } from './trabajadores.service';
 
-@Controller('auth-usuario')
+@Controller('auth-trabajador')
 export class AuthController {
-  constructor(private readonly usuariosService: UsuariosService) {}
+  constructor(private readonly trabajadorService: TrabajadoresService) {}
 
   @Post('login')
   async login(@Body() body: { Correo: string; Contrasea: string }) {
     const { Correo, Contrasea } = body;
 
     // Buscar el usuario por el email
-    const user = await this.usuariosService.findByEmail(Correo);
+    const user = await this.trabajadorService.findByEmail(Correo);
 
     // Si no se encuentra el usuario, lanzar un error
     if (!user) {
-      throw new UnauthorizedException('Usuario no encontrado');
+      throw new UnauthorizedException('Trabajador no encontrado');
     }
 
     // Comparar la contraseña con la guardada en la base de datos

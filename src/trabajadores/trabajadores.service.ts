@@ -41,4 +41,11 @@ export class TrabajadoresService {
     return this.trabajadorRepository.delete({ idTrabajador });
   }
 
+  async findByEmail(email: string): Promise<Trabajador> {
+    let user = await this.trabajadorRepository.findOne({
+      where: { Correo: email },
+    });
+    return user;
+  }
+
 }
