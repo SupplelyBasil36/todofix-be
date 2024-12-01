@@ -3,10 +3,11 @@ import { TrabajadoresController } from './trabajadores.controller';
 import { TrabajadoresService } from './trabajadores.service';
 import { Trabajador } from 'src/entities/trabajador.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { AuthController } from './authtrabajador.controller';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Trabajador])],
-  controllers: [TrabajadoresController],
+  controllers: [TrabajadoresController, AuthController],
   providers: [TrabajadoresService],
 })
 export class TrabajadoresModule {}
