@@ -64,7 +64,7 @@ export class ServiciosService {
   }
 
   async getServicioTrabajador(idTrabajador: number) {
-    const servicio = await this.servicioRepository.findOne({
+    const servicio = await this.servicioRepository.find({
       where: {
         trabajador: { idTrabajador },
       },
@@ -76,12 +76,12 @@ export class ServiciosService {
       );
     }
 
-    const imagenUrl = `${process.env.HOST_URL}/uploads/${servicio.Imagen}`;
-
-    return {
+    const serviciosConImagenes = servicio.map((servicio) => ({
       ...servicio,
-      imagenUrl, // Agregar la URL de la imagen a la respuesta
-    };
+      imagenUrl: `${process.env.HOST_URL}/uploads/${servicio.Imagen}`, // Aquí iteramos sobre cada servicio
+    }));
+  
+    return serviciosConImagenes;
   }
 
   deleteServicio(idServicio: number) {
