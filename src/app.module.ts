@@ -21,7 +21,7 @@ import { join } from 'path';
       password: 'MPcxRuFZaGUTjDDPXkNRVNNEzUOaejSl',
       database: 'railway', //railway
       entities: [join(__dirname, '**', '*.entity{.ts,.js}')],  
-      synchronize: true,
+      synchronize: false,
     }),
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'uploads'),

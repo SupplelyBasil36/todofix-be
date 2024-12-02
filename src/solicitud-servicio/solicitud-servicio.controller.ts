@@ -6,7 +6,7 @@ import { SolicitudServicioService } from './solicitud-servicio.service';
 export class SolicitudServicioController {
     constructor(private readonly solicitudservicioService: SolicitudServicioService){}
 
-    @Post()
+    @Post(':idServicio/:idTrabajador/:idUsuario')
     async create(
         @Param('idServicio') idServicio: number,
         @Param('idTrabajador') idTrabajador: number,
