@@ -34,6 +34,12 @@ export class ServiciosController {
   getServicio(@Param('id', ParseIntPipe) id: number) {
     return this.serviciosService.getServicio(id);
   }
+
+  @Get('trabajador/:id')
+  getServicioTrabajador(@Param('id', ParseIntPipe) id: number) {
+    return this.serviciosService.getServicioTrabajador(id);
+  }
+
   @Delete(':id')
   deleteServicio(@Param('id', ParseIntPipe) id: number) {
     this.serviciosService.deleteServicio(id);

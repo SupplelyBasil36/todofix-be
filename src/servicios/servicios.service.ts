@@ -63,6 +63,27 @@ export class ServiciosService {
     };
   }
 
+  async getServicioTrabajador(idTrabajador: number) {
+    const servicio = await this.servicioRepository.findOne({
+      where: {
+        trabajador: { idTrabajador },
+      },
+      relations: ['trabajador', 'solicitudservicio'],
+    });
+    if (!servicio) {
+      throw new NotFoundException(
+        `Servicio con id ${idTrabajador} no encontrado`,
+      );
+    }
+
+    const imagenUrl = `${process.env.HOST_URL}/uploads/${servicio.Imagen}`;
+
+    return {
+      ...servicio,
+      imagenUrl, // Agregar la URL de la imagen a la respuesta
+    };
+  }
+
   deleteServicio(idServicio: number) {
     return this.servicioRepository.delete({ idServicio });
   }
