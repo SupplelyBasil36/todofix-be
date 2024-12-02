@@ -18,7 +18,7 @@ import { join } from 'path';
       host: 'mysql.railway.internal', //mysql.railway.internal
       port: 3306,
       username: 'root',
-      password: 'ysbxAFzpoeFiCBSBrPRNJHWMsZTMuAtM',
+      password: 'MPcxRuFZaGUTjDDPXkNRVNNEzUOaejSl',
       database: 'railway', //railway
       entities: [join(__dirname, '**', '*.entity{.ts,.js}')],  
       synchronize: true,
