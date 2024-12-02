@@ -21,4 +21,9 @@ export class SolicitudServicioController {
         return this.solicitudservicioService.getSolSer(id);
     }
 
+    @Get('usuario/:id')
+    getSolSerUsuario(@Param('id', ParseIntPipe) id: number){
+        return this.solicitudservicioService.getSolSerUsuario(id);
+    }
+
 }

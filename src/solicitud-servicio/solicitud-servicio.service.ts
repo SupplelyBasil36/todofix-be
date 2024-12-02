@@ -54,4 +54,13 @@ export class SolicitudServicioService {
     })
   }
 
+  getSolSerUsuario(idUsuario: number){
+    return this.solicitudservicioRepository.find({
+      where: {
+        usuario: {idUsuario}
+      },
+      relations: ['usuario', 'trabajador', 'servicio']
+    })
+  }
+
 }
