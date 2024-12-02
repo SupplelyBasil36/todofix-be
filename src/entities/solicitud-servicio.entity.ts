@@ -29,11 +29,11 @@ export class SolicitudServicio {
   @Column('datetime', { nullable: true })
   Fecha_programada?: Date;
 
-  @OneToOne(() => Trabajador, (trabajador) => trabajador.historial)
+  @ManyToOne(() => Trabajador, (trabajador) => trabajador.historial)
   @JoinColumn({name: 'FK_idTrabajador'})
   trabajador: Trabajador;
 
-  @OneToOne(() => Servicio, (servicio) => servicio.historial)
+  @ManyToOne(() => Servicio, (servicio) => servicio.historial)
   @JoinColumn({name: 'FK_idServicio'})
   servicio: Servicio;
 
